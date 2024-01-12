@@ -1,5 +1,12 @@
 package br.com.marcos.desafiobasecamp.todo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateTodoListRequest {
 
     private String name;
@@ -8,12 +15,11 @@ public class CreateTodoListRequest {
     
     
     public TodoSet toModel() {
-        TodoSet t = TodoSet.builder()
-                .name(this.name)
-                .description(this.description)
+
+        return TodoSet.builder()
+                .name(this.getName())
+                .description(this.getDescription())
                 .build();
-        
-        return t;
     }
 
     //TODO implementar inclusão de arquivos
