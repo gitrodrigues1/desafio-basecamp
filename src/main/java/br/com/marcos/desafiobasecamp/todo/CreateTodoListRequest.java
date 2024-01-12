@@ -1,5 +1,6 @@
 package br.com.marcos.desafiobasecamp.todo;
 
+import br.com.marcos.desafiobasecamp.todo.entity.TodoSet;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,5 @@ public class CreateTodoListRequest {
                 .build();
     }
 
-    //TODO implementar inclusão de arquivos
+    //[ ] implementar inclusão de arquivos
 }

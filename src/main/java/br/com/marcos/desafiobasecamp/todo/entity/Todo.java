@@ -1,4 +1,4 @@
-package br.com.marcos.desafiobasecamp.todo;
+package br.com.marcos.desafiobasecamp.todo.entity;
 
 import br.com.marcos.desafiobasecamp.person.Person;
 import jakarta.persistence.*;
@@ -37,9 +37,9 @@ public class Todo {
 
     private String notes;
 
-    private File attachedFile;      //TODO implementar manipulação de arquivos
+    private File attachedFile;      //[ ] implementar manipulação de arquivos
 
-    @OneToMany
+    @OneToMany(mappedBy = "toDo")
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToOne

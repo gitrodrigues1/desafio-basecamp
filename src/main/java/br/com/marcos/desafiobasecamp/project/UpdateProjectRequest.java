@@ -12,7 +12,7 @@ public class UpdateProjectRequest {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    //TODO criar alterações de permissões de acesso
+    //[ ] criar alterações de permissões de acesso
 
     public Project toModel() {
         Project p = Project.builder()

@@ -1,4 +1,4 @@
-package br.com.marcos.desafiobasecamp.todo;
+package br.com.marcos.desafiobasecamp.todo.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -26,7 +26,7 @@ public class TodoSet {
 
     private String description;
 
-    //TODO implementar inclusão de arquivos
+    //[ ] implementar inclusão de arquivos
 
     @OneToMany(mappedBy = "todoSet")
     private List<Todo> toDos = new ArrayList<>();
