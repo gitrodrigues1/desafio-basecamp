@@ -23,5 +23,5 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "todo_id")
-    private Todo toDo;
+    private TodoItem toDo;
 }

@@ -2,9 +2,19 @@ package br.com.marcos.desafiobasecamp.project;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class CreateProjectRequest {
 
+    @NotBlank
     private String name;
+
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -17,16 +27,16 @@ public class CreateProjectRequest {
 
     public Project toModel() {
         Project p = Project.builder()
-                .name(this.name)
-                .description(this.description)
-                .startDate(this.startDate)
-                .endDate(this.endDate)
-                .hasMessageBoard(this.hasMessageBoard)
-                .hasTodos(this.hasTodos)
-                .hasDocsAndFiles(this.hasDocsAndFiles)
-                .hasChat(this.hasChat)
-                .hasSchedule(this.hasSchedule)
-                .hasKanban(this.hasKanban)
+                .name(this.getName())
+                .description(this.getDescription())
+                .startDate(this.getStartDate())
+                .endDate(this.getEndDate())
+                .hasMessageBoard(this.isHasMessageBoard())
+                .hasTodos(this.isHasTodos())
+                .hasDocsAndFiles(this.isHasDocsAndFiles())
+                .hasChat(this.isHasChat())
+                .hasSchedule(this.isHasSchedule())
+                .hasKanban(this.isHasKanban())
                 .build();
 
         return p;

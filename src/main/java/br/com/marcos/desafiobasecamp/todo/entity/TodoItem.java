@@ -4,6 +4,7 @@ import br.com.marcos.desafiobasecamp.person.Person;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,8 +18,9 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-public class Todo {
+public class TodoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +29,16 @@ public class Todo {
     @NotBlank
     private String name;
 
-    @OneToMany(mappedBy = "assigned_person_id")
+    @ManyToMany
+    @JoinTable(name = "todo_assigned_to", 
+               joinColumns = @JoinColumn(name = "todo_id"),
+               inverseJoinColumns = @JoinColumn(name = "person_id"))
     private Set<Person> assignedTo = new HashSet<>();
 
-    @OneToMany(mappedBy = "notified_person_id")
+    @ManyToMany
+    @JoinTable(name = "todo_notify_to", 
+               joinColumns = @JoinColumn(name = "todo_id"),
+               inverseJoinColumns = @JoinColumn(name = "person_id"))
     private Set<Person> notifyTo = new HashSet<>();
 
     private LocalDate dueOn;

@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/project")
 public class ProjectController {
@@ -16,12 +18,12 @@ public class ProjectController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProject(@RequestBody CreateProjectRequest request) {
+    public void createProject(@Valid @RequestBody CreateProjectRequest request) {
         projectRepository.save(request.toModel());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateProject(@PathVariable Long id, UpdateProjectRequest request) {
+    public ResponseEntity<String> updateProject(@Valid @PathVariable Long id, UpdateProjectRequest request) {
         try {
             projectRepository.findById(id)
                     .ifPresent(p -> projectRepository.save(request.toModel()));

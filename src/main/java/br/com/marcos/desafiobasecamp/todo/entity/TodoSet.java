@@ -29,6 +29,6 @@ public class TodoSet {
     //[ ] implementar inclusão de arquivos
 
     @OneToMany(mappedBy = "todoSet")
-    private List<Todo> toDos = new ArrayList<>();
+    private List<TodoItem> toDos = new ArrayList<>();
 
 }
