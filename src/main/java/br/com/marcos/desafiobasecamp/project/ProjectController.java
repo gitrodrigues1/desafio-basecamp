@@ -24,15 +24,9 @@ public class ProjectController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateProject(@Valid @PathVariable Long id, UpdateProjectRequest request) {
-        try {
-            projectRepository.findById(id)
-                    .ifPresent(p -> projectRepository.save(request.toModel()));
-
-            return ResponseEntity.ok().body("Atualizado com sucesso");
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return projectRepository.findById(id)
+                .map(project -> ResponseEntity.ok().body("Updated with success."))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
