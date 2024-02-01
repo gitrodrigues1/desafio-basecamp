@@ -11,5 +11,4 @@ e.g. implement project crud endpoints.
 
 ## User Stories
 
-- More details on github project's page (link below)
-[bc-challenge-api](https://github.com/users/gitrodrigues1/projects/4)
+- More details about stories on github project's page
