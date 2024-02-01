@@ -1,9 +1,11 @@
 package br.com.marcos.desafiobasecamp.todo;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.marcos.desafiobasecamp.todo.entity.TodoSet;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -19,8 +21,9 @@ public class TodoListController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTodoList(@RequestBody CreateTodoListRequest request) {
-        todoRepository.save(request.toModel());
+    public ResponseEntity<?>  createTodoList(@Valid @RequestBody CreateTodoListRequest request) {
+        TodoSet todo = todoRepository.save(request.toModel());
+        return ResponseEntity.ok().body(todo);
     }
 
     @GetMapping
@@ -32,4 +35,5 @@ public class TodoListController {
     public TodoSet getById(@PathVariable Long id) {
         return todoRepository.findById(id).orElse(null);
     }
+
 }

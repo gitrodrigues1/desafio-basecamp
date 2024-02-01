@@ -1,6 +1,7 @@
 package br.com.marcos.desafiobasecamp.todo;
 
 import br.com.marcos.desafiobasecamp.todo.entity.TodoSet;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateTodoListRequest {
 
+    @NotBlank
     private String name;
 
     private String description;
